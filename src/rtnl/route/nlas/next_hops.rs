@@ -126,6 +126,17 @@ impl Emitable for NextHop {
     }
 }
 
+impl Default for NextHop {
+    fn default() -> Self {
+        Self {
+            flags: NextHopFlags::empty(),
+            hops: 0,
+            interface_id: 0,
+            nlas: Vec::new(),
+        }
+    }
+}
+
 impl NextHop {
     /// Gateway address (it is actually encoded as an `RTA_GATEWAY` nla)
     pub fn gateway(&self) -> Option<IpAddr> {
